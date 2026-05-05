@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modifier des textes et liens hypertextes dans une page HTML</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #f8fafc;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      background: #ffffff;
+    }
+    h1, h2, h3 {
+      color: #0f172a;
+      line-height: 1.25;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-size: 24px;
+      margin-top: 36px;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 24px;
+    }
+    h3 {
+      font-size: 18px;
+      margin-top: 24px;
+    }
+    .intro {
+      font-size: 17px;
+      color: #475569;
+      margin-bottom: 28px;
+    }
+    .box {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 16px 18px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .warning {
+      background: #fff7ed;
+      border-left: 4px solid #f97316;
+    }
+    code, pre {
+      font-family: Consolas, Monaco, monospace;
+    }
+    pre {
+      background: #0f172a;
+      color: #e5e7eb;
+      padding: 16px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 14px;
+    }
+    code {
+      background: #e5e7eb;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+    pre code {
+      background: transparent;
+      padding: 0;
+    }
+    ol, ul {
+      padding-left: 24px;
+    }
+    li {
+      margin: 8px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f1f5f9;
+    }
+    .checklist li {
+      list-style: none;
+      margin-left: -20px;
+    }
+    .checklist li::before {
+      content: "☐ ";
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>Modifier un texte ou un lien hypertexte dans une page HTML</h1>
+    <p class="intro">
+      Cette documentation explique comment retrouver un bouton, un texte ou un lien dans un fichier HTML, puis modifier soit le texte affiché, soit l’adresse du lien.
+    </p>
+
+    <div class="box">
+      <strong>Règle simple :</strong> dans un lien HTML, le texte visible est entre <code>&gt;</code> et <code>&lt;/a&gt;</code>. L’adresse du lien est dans <code>href="..."</code>.
+    </div>
+
+    <h2>1. Faire une copie du fichier</h2>
+    <ol>
+      <li>Dupliquez le fichier HTML avant toute modification.</li>
+      <li>Gardez une version originale, par exemple : <code>page-originale.html</code>.</li>
+      <li>Travaillez sur une copie, par exemple : <code>page-modifiee.html</code>.</li>
+    </ol>
+
+    <h2>2. Ouvrir le fichier HTML</h2>
+    <p>Ouvrez le fichier avec un éditeur de texte :</p>
+    <ul>
+      <li>Bloc-notes sur Windows</li>
+      <li>TextEdit sur Mac en mode texte brut</li>
+      <li>Visual Studio Code, recommandé si disponible</li>
+    </ul>
+
+    <h2>3. Chercher un bouton, un texte ou un lien</h2>
+    <p>Utilisez la fonction de recherche :</p>
+    <ul>
+      <li>Sur Windows : <code>Ctrl + F</code></li>
+      <li>Sur Mac : <code>Cmd + F</code></li>
+    </ul>
+
+    <h3>Cas A — Chercher un texte précis</h3>
+    <p>Si vous voulez modifier le texte visible <strong>hello@deskopolitan.com</strong>, cherchez directement :</p>
+    <pre><code>hello@deskopolitan.com</code></pre>
+
+    <p>Vous trouverez par exemple :</p>
+    <pre><code>&lt;a href="mailto:hello@deskopolitan.com?subject=Programme%20de%20parrainage%20-%20Deskopolitan"&gt;hello@deskopolitan.com&lt;/a&gt;</code></pre>
+
+    <h3>Cas B — Chercher un bouton ou un lien</h3>
+    <p>Pour trouver tous les liens ou boutons cliquables, cherchez :</p>
+    <pre><code>&lt;a href</code></pre>
+
+    <p>Chaque résultat correspond généralement à un lien cliquable.</p>
+
+    <h3>Cas C — Chercher un bouton avec un mot affiché</h3>
+    <p>Si le bouton affiche par exemple <strong>Contactez-nous</strong>, cherchez :</p>
+    <pre><code>Contactez-nous</code></pre>
+
+    <p>Vous pouvez aussi chercher un mot plus court si vous n’êtes pas sûr du texte exact :</p>
+    <pre><code>Contact</code></pre>
+
+    <h2>4. Modifier le texte affiché d’un lien</h2>
+    <p>Exemple avant modification :</p>
+    <pre><code>&lt;a href="https://deskopolitan.com/wp-content/uploads/2025/01/DP-reglement_parrainage_2025-241230.pdf"&gt;règlement de parrainage disponible sur ce lien.&lt;/a&gt;</code></pre>
+
+    <p>Dans cet exemple, le texte affiché est :</p>
+    <pre><code>règlement de parrainage disponible sur ce lien.</code></pre>
+
+    <p>Vous pouvez le remplacer par :</p>
+    <pre><code>consultez le règlement complet du programme de parrainage.</code></pre>
+
+    <p>Résultat après modification :</p>
+    <pre><code>&lt;a href="https://deskopolitan.com/wp-content/uploads/2025/01/DP-reglement_parrainage_2025-241230.pdf"&gt;consultez le règlement complet du programme de parrainage.&lt;/a&gt;</code></pre>
+
+    <div class="box warning">
+      Ne modifiez pas l’adresse dans <code>href="..."</code> si vous voulez seulement changer le texte visible.
+    </div>
+
+    <h2>5. Modifier l’adresse du lien</h2>
+    <p>Pour changer la destination du lien, il faut modifier uniquement ce qui se trouve dans <code>href="..."</code>.</p>
+
+    <p>Exemple avant :</p>
+    <pre><code>&lt;a href="https://ancien-lien.com"&gt;Voir le règlement&lt;/a&gt;</code></pre>
+
+    <p>Exemple après :</p>
+    <pre><code>&lt;a href="https://nouveau-lien.com"&gt;Voir le règlement&lt;/a&gt;</code></pre>
+
+    <p>Ici, le texte affiché reste le même, mais le lien mène vers une nouvelle adresse.</p>
+
+    <h2>6. Modifier un lien email</h2>
+    <p>Un lien email commence souvent par <code>mailto:</code>.</p>
+
+    <p>Exemple actuel :</p>
+    <pre><code>&lt;a href="mailto:hello@deskopolitan.com?subject=Programme%20de%20parrainage%20-%20Deskopolitan"&gt;hello@deskopolitan.com&lt;/a&gt;</code></pre>
+
+    <h3>Changer uniquement le texte affiché</h3>
+    <pre><code>&lt;a href="mailto:hello@deskopolitan.com?subject=Programme%20de%20parrainage%20-%20Deskopolitan"&gt;contactez notre équipe&lt;/a&gt;</code></pre>
+
+    <h3>Changer l’adresse email de destination</h3>
+    <pre><code>&lt;a href="mailto:nouvelleadresse@deskopolitan.com?subject=Programme%20de%20parrainage%20-%20Deskopolitan"&gt;contactez notre équipe&lt;/a&gt;</code></pre>
+
+    <div class="box warning">
+      Pour un lien email, l’adresse réellement utilisée est celle après <code>mailto:</code>, pas forcément le texte visible.
+    </div>
+
+    <h2>7. Modifier un lien autour d’une image ou d’un bouton visuel</h2>
+    <p>Certains liens ne contiennent pas de texte, mais une image.</p>
+
+    <p>Exemple :</p>
+    <pre><code>&lt;a href="https://www.instagram.com/deskopolitan/"&gt;
+  &lt;img alt="Instagram" src="image-instagram.png"&gt;
+&lt;/a&gt;</code></pre>
+
+    <p>Dans ce cas :</p>
+    <ul>
+      <li>Il n’y a pas de texte visible à modifier.</li>
+      <li>Pour changer la destination du clic, modifiez l’adresse dans <code>href="..."</code>.</li>
+      <li>Pour modifier le nom descriptif de l’image, modifiez <code>alt="Instagram"</code>.</li>
+    </ul>
+
+    <h2>8. Résumé rapide</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Objectif</th>
+          <th>Partie à modifier</th>
+          <th>Exemple</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Changer le texte visible</td>
+          <td>Texte entre <code>&gt;</code> et <code>&lt;/a&gt;</code></td>
+          <td><code>&gt;Nouveau texte&lt;/a&gt;</code></td>
+        </tr>
+        <tr>
+          <td>Changer la destination du lien</td>
+          <td>Adresse dans <code>href="..."</code></td>
+          <td><code>href="https://nouveau-lien.com"</code></td>
+        </tr>
+        <tr>
+          <td>Trouver tous les liens</td>
+          <td>Recherche dans le fichier</td>
+          <td><code>&lt;a href</code></td>
+        </tr>
+        <tr>
+          <td>Trouver un texte précis</td>
+          <td>Recherche du mot affiché</td>
+          <td><code>règlement</code>, <code>Contact</code>, <code>hello@</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>9. Tester après modification</h2>
+    <ol>
+      <li>Enregistrez le fichier HTML.</li>
+      <li>Ouvrez-le dans un navigateur.</li>
+      <li>Vérifiez que le texte affiché a bien changé.</li>
+      <li>Cliquez sur le lien pour vérifier qu’il mène au bon endroit.</li>
+      <li>Si le lien est un email, vérifiez qu’il ouvre bien le bon destinataire.</li>
+    </ol>
+
+    <h2>10. Checklist finale</h2>
+    <ul class="checklist">
+      <li>J’ai fait une copie du fichier original.</li>
+      <li>J’ai cherché le texte ou le bouton avec <code>Ctrl + F</code> ou <code>Cmd + F</code>.</li>
+      <li>J’ai identifié le bon bloc <code>&lt;a href="..."&gt;...&lt;/a&gt;</code>.</li>
+      <li>J’ai modifié le texte visible seulement si besoin.</li>
+      <li>J’ai modifié le lien dans <code>href="..."</code> seulement si besoin.</li>
+      <li>J’ai testé le fichier dans un navigateur.</li>
+      <li>J’ai cliqué sur le lien pour vérifier qu’il fonctionne.</li>
+    </ul>
+  </main>
+</body>
+</html>
